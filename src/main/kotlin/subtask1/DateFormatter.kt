@@ -2,6 +2,7 @@ package subtask1
 
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import java.util.*
 
 class DateFormatter {
 
@@ -9,7 +10,7 @@ class DateFormatter {
         var s = "Такого дня не существует"
         try {
             s = LocalDate.of(Integer.valueOf(year), Integer.valueOf(month), Integer.valueOf(day))
-                .format(DateTimeFormatter.ofPattern("d MMMM, EEEE"))
+                .format(DateTimeFormatter.ofPattern("d MMMM, EEEE").withLocale(Locale("ru")))
         } finally {
             return s
         }
