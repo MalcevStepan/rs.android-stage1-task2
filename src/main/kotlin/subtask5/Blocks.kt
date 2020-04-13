@@ -2,6 +2,7 @@ package subtask5
 
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import java.util.*
 import kotlin.reflect.KClass
 
 class Blocks {
@@ -9,9 +10,10 @@ class Blocks {
         val arr = blockA.filterIsInstance(blockB.javaObjectType)
         return when (blockB) {
             String::class -> arr.joinToString("")
-            Int::class -> arr.sumBy {  it as Int }
-            else -> LocalDate.parse(arr.maxBy { it as LocalDate}.toString()).format(
-                DateTimeFormatter.ofPattern("dd.MM.yyyy"))
+            Int::class -> arr.sumBy { it as Int }
+            else -> LocalDate.parse(arr.maxBy { it as LocalDate }.toString()).format(
+                DateTimeFormatter.ofPattern("dd.MM.yyyy").withLocale(Locale("ru"))
+            )
         }
     }
 }
